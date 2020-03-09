@@ -1,6 +1,7 @@
 // ROOT COMPONENTS
 
 import React from 'react';
+import SearchBar from './SearchBar';
 
 // Membuat komponen berbasis class
 
@@ -10,8 +11,9 @@ class App extends React.Component {
 
     render () {
         return (
-            <div>
-                <h1> REACT 101 </h1>
+            <div className="container">
+                <h1 className="text-center mt-3"> REACT 101 </h1>
+                <SearchBar/>
             </div>
         );
     }

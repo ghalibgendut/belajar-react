@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // extension .js tidak wajib ditulis
-import App from './components/App';
+import App from './components/App.jsx';
 
 
 // Menghubungkan App ke index.html di folder public
