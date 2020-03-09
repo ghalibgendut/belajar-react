@@ -3,12 +3,24 @@ import axios from 'axios';
 
 class SearchBar extends React.Component {
 
+    // Tempat penyimpanan untuk data komponen 
+    state = {
+        images : []
+        
+    }
+
     kirimData = (event) => {
         // Agar halaman tidak merefresh
         event.preventDefault();
         // console.log(event);
 
         // Akses Unsplash API
+        // Setelah melakukan request akan meruning function 'then'
+        // 'then' menerima function dengan satu parameter 'res'
+        // 'res' akan berisi 'respon' dari API
+        // Data yang diinginkan akan berada di property 'data' dari object 'res'
+        // Data akan ada di 'res.data'
+
         axios.get(
             'https://api.unsplash.com/search/photos',
             {
@@ -22,10 +34,9 @@ class SearchBar extends React.Component {
                 }
             }
         ).then(
-            (res) => {
-                console.log(res.data);
-            }
+            (res) => {this.setState({ images: res.data })}
         );
+        // setState digunakan untuk meng-update 'state'
     }
 
 
