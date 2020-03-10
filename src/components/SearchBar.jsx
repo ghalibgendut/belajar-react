@@ -10,9 +10,8 @@ class SearchBar extends React.Component {
     }
 
     kirimData = (event) => {
-        // Agar halaman tidak merefresh
+        // Agar halaman tidak merefresh / reload
         event.preventDefault();
-        // console.log(event);
 
         // Akses Unsplash API
         // Setelah melakukan request akan meruning function 'then'
@@ -21,6 +20,7 @@ class SearchBar extends React.Component {
         // Data yang diinginkan akan berada di property 'data' dari object 'res'
         // Data akan ada di 'res.data'
 
+        // request gambar
         axios.get(
             'https://api.unsplash.com/search/photos',
             {
@@ -29,12 +29,15 @@ class SearchBar extends React.Component {
                 },
 
                 params: {
-                    query: 'car',
+                    query: 'Car',
                     per_page: 15
                 }
             }
+            // respon dari request (res) disimpan ke 'state'
         ).then(
-            (res) => {this.setState({ images: res.data })}
+            (res) => {
+                this.setState({ images: res.data.results });
+            }
         );
         // setState digunakan untuk meng-update 'state'
     }
@@ -45,7 +48,7 @@ class SearchBar extends React.Component {
         return(
             <div>
                 <form onSubmit={this.kirimData} className="form-group">
-                    <input type="text" name="" className="form-control" id=""/>
+                    <input type="text" name="search-bar" className="form-control" id=""/>
                 </form>
             </div>
         );

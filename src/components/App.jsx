@@ -2,6 +2,9 @@
 
 import React from 'react';
 import SearchBar from './SearchBar';
+import ImageList from './ImageList';
+
+
 
 // Membuat komponen berbasis class
 
@@ -14,6 +17,7 @@ class App extends React.Component {
             <div className="container">
                 <h1 className="text-center mt-3"> REACT 101 </h1>
                 <SearchBar/>
+                <ImageList/>
             </div>
         );
     }
