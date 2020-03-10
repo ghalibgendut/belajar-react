@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
 
 
 
-    render() {
+    render = () => {
         return(
             <div>
                 <form onSubmit={this.kirimData} className="form-group">
