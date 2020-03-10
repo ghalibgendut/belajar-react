@@ -3,16 +3,11 @@ import React from 'react';
 
 class SearchBar extends React.Component {
 
-    // Tempat penyimpanan untuk data komponen 
-    state = {
-        images : []
-        
-    }
 
     kirimData = (event) => {
         // Agar halaman tidak merefresh / reload
         event.preventDefault();
-        this.props.onCari('Car');
+        this.props.onCari(this.keyword.value);
 
         // Akses Unsplash API
         // Setelah melakukan request akan meruning function 'then'
@@ -49,7 +44,7 @@ class SearchBar extends React.Component {
         return(
             <div>
                 <form onSubmit={this.kirimData} className="form-group">
-                    <input type="text" name="search-bar" className="form-control" id=""/>
+                    <input ref={(input) => {this.keyword = input }} type="text" className="form-control"/>
                 </form>
             </div>
         );

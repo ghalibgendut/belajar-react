@@ -7,15 +7,17 @@ import axios from 'axios';
 
 
 
+
 // Membuat komponen berbasis class
 
 class App extends React.Component {
 
+    // Tempat penyimpanan untuk data komponen 
     state = {
         images: []
     }
 
-    onCari (keyword) {
+    onCari = (keyword) => {
         axios.get(
             'https://api.unsplash.com/search/photos',
             {
@@ -31,11 +33,10 @@ class App extends React.Component {
             // respon dari request (res) disimpan ke 'state'
         ).then(
             (res) => {
-                console.log(res.data.results);
-                 // this.setState({ images: res.data.results });
-                
+                // console.log(res.data.results);
+                this.setState({ images: res.data.results }) 
             }
-        );
+        )
     }
    
    
@@ -45,8 +46,9 @@ class App extends React.Component {
         return (
             <div className="container">
                 <h1 className="text-center mt-3"> REACT 101 </h1>
+                {/* onCari yang pertama adalah property */}
                 <SearchBar onCari={this.onCari}/>
-                <ImageList/>
+                <ImageList images={this.state.images}/>
             </div>
         );
     }
