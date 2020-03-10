@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class SearchBar extends React.Component {
 
@@ -12,6 +12,7 @@ class SearchBar extends React.Component {
     kirimData = (event) => {
         // Agar halaman tidak merefresh / reload
         event.preventDefault();
+        this.props.onCari('Car');
 
         // Akses Unsplash API
         // Setelah melakukan request akan meruning function 'then'
@@ -21,24 +22,24 @@ class SearchBar extends React.Component {
         // Data akan ada di 'res.data'
 
         // request gambar
-        axios.get(
-            'https://api.unsplash.com/search/photos',
-            {
-                headers: {
-                    Authorization: 'Client-ID PHgqZ0Sw7bhJTi078VrMDJ7I8KPRo_YoQdz32uU15Rs'
-                },
+        // axios.get(
+        //     'https://api.unsplash.com/search/photos',
+        //     {
+        //         headers: {
+        //             Authorization: 'Client-ID PHgqZ0Sw7bhJTi078VrMDJ7I8KPRo_YoQdz32uU15Rs'
+        //         },
 
-                params: {
-                    query: 'Car',
-                    per_page: 15
-                }
-            }
-            // respon dari request (res) disimpan ke 'state'
-        ).then(
-            (res) => {
-                this.setState({ images: res.data.results });
-            }
-        );
+        //         params: {
+        //             query: 'Car',
+        //             per_page: 15
+        //         }
+        //     }
+        //     // respon dari request (res) disimpan ke 'state'
+        // ).then(
+        //     (res) => {
+        //         this.setState({ images: res.data.results });
+        //     }
+        // );
         // setState digunakan untuk meng-update 'state'
     }
 
